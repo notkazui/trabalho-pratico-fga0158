@@ -127,8 +127,8 @@ public class Main {
                     } else if (p instanceof Comida) {
                         Comida c = (Comida) p;
                         String restricao = c.isVeganoOuSemGluten() ? "[Vegano/Sem Glúten]" : "[Tradicional]";
-                        System.out.printf("[%s] %s %s - R$ %.2f (Estoque: %d unid.)\n",
-                                c.getCodigoUnico(), c.getNome(), restricao, c.getPrecoBase(), c.getQuantidadeEstoque());
+                        System.out.printf("[%s] %s %s [Preparo: %d min] - R$ %.2f (Estoque: %d unid.)\n",
+                                c.getCodigoUnico(), c.getNome(), restricao, c.getTempoPreparoMinutos(), c.getPrecoBase(), c.getQuantidadeEstoque());
                     }
                     itensDisponiveis++;
                 }
