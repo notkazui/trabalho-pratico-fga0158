@@ -37,25 +37,17 @@ public class Pedido implements Promocional {
         return total;
     }
 
+    public static void decrementarContador() {
+        contadorPedidos--;
+    }
+
     @Override
     public double aplicarDesconto(double valorOriginal) {
         return valorOriginal * 0.90;
     }
 
-    public static int getContadorPedidos() {
-        return contadorPedidos;
-    }
-
-    public static void setContadorPedidos(int contadorPedidos) {
-        Pedido.contadorPedidos = contadorPedidos;
-    }
-
     public int getNumeroPedido() {
         return numeroPedido;
-    }
-
-    public void setNumeroPedido(int numeroPedido) {
-        this.numeroPedido = numeroPedido;
     }
 
     public String getNomeAtendente() {

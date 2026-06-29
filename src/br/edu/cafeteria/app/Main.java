@@ -101,11 +101,15 @@ public class Main {
 
         Pedido pedido = new Pedido(atendente, clienteAtual);
 
+        System.out.println("\n=========================================");
+        System.out.printf(" COMANDA CRIADA COM SUCESSO: #%03d\n", pedido.getNumeroPedido());
+        System.out.println("=========================================");
+
         boolean adicionarItens = true;
         while (adicionarItens) {
 
             if (pedido.getItens() != null && !pedido.getItens().isEmpty()) {
-                System.out.println("\n CARRINHO ATUAL");
+                System.out.printf("\n CARRINHO DA COMANDA #%03d\n", pedido.getNumeroPedido());
                 for (ItemPedido ip : pedido.getItens()) {
                     double subtotalItem = ip.getQuantidade() * ip.getProduto().getPrecoBase();
                     System.out.printf("%d x %s (R$ %.2f) = R$ %.2f\n",
@@ -114,6 +118,8 @@ public class Main {
                 System.out.printf("Total Parcial: R$ %.2f\n", pedido.calcularTotal());
                 System.out.println("-------------------------");
             }
+
+            estoqueProdutos.sort((p1, p2) -> p1.getCodigoUnico().compareToIgnoreCase(p2.getCodigoUnico()));
 
             int itensDisponiveis = 0;
             System.out.println("\n-- Cardápio Disponível --");
@@ -205,10 +211,11 @@ public class Main {
         double total = pedido.calcularTotal();
         if (total == 0) {
             System.out.println("Pedido vazio. Venda cancelada. Retornando ao menu...");
+            Pedido.decrementarContador();
             return;
         }
 
-        System.out.println("\n--- FECHAMENTO DE CONTA ---");
+        System.out.printf("\n--- FECHAMENTO DA COMANDA #%03d ---\n", pedido.getNumeroPedido());
 
         if (isDiaGeek) {
             total = pedido.aplicarDesconto(total);
@@ -365,5 +372,7 @@ public class Main {
         estoqueProdutos.add(new Comida("C02", "Portal Cake", 18.50, 8, 5, false));
         estoqueProdutos.add(new Bebida("B01", "Café do Programador", 8.00, 50, "P", 250.0));
         estoqueProdutos.add(new Bebida("B02", "Poção de Mana", 14.00, 30, "M", 0.0));
+
+        clientes.add(new ClienteStandard("Aventureiro Novato", "11122233344"));
     }
 }
