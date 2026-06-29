@@ -115,7 +115,7 @@ public class Main {
                     System.out.printf("%d x %s (R$ %.2f) = R$ %.2f\n",
                             ip.getQuantidade(), ip.getProduto().getNome(), ip.getProduto().getPrecoBase(), subtotalItem);
                 }
-                System.out.printf("Total Parcial: R$ %.2f\n", pedido.calcularTotal());
+                System.out.printf("Total: R$ %.2f\n", pedido.calcularTotal());
                 System.out.println("-------------------------");
             }
 
@@ -222,7 +222,7 @@ public class Main {
             System.out.println("Desconto de Evento Geek (10%) aplicado!");
         }
 
-        System.out.printf("Total parcial da conta: R$ %.2f\n", total);
+        System.out.printf("Total: R$ %.2f\n", total);
 
         if (cliente != null && cliente.getSaldoXP() > 0) {
             double pontosNecessariosPara100 = total * 10.0;
@@ -372,7 +372,5 @@ public class Main {
         estoqueProdutos.add(new Comida("C02", "Portal Cake", 18.50, 8, 5, false));
         estoqueProdutos.add(new Bebida("B01", "Café do Programador", 8.00, 50, "P", 250.0));
         estoqueProdutos.add(new Bebida("B02", "Poção de Mana", 14.00, 30, "M", 0.0));
-
-        clientes.add(new ClienteStandard("Aventureiro Novato", "11122233344"));
     }
 }

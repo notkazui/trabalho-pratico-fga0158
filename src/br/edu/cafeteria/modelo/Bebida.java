@@ -1,7 +1,7 @@
 package br.edu.cafeteria.modelo;
 
 public class Bebida extends Produto {
-    private String tamanho; // P, M, G
+    private String tamanho;
     private double cafeinaMg;
 
     public Bebida(String codigoUnico, String nome, double precoBase, int quantidadeEstoque,
